@@ -1,0 +1,21 @@
+{
+  "name": "localbizz",
+  "version": "1.0.0",
+  "description": "A local business support platfor",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "integrated-project",
+    "project"
+  ],
+  "author": "Adarsh Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "react": "^18.2.0",
+    "yarn": "^1.22.22"
+  }
+}

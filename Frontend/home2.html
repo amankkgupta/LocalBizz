@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Shop Listing</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 20px;
+      }
+
+      .shop,
+      .product {
+        border: 1px solid #ddd;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 50px;
+        /* Adjust height as needed */
+      }
+
+      .search input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .search button {
+        padding: 8px 12px;
+        background-color: #28a745;
+        /* Example button color */
+        color: #fff;
+        /* Example button text color */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .search button:hover {
+        background-color: #218838;
+        /* Example button hover color */
+      }
+
+      #menu li {
+        display: inline;
+        list-style: none;
+        margin: 0px 25px;
+      }
+
+      #menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      #menu a {
+        text-decoration: none;
+        color: white;
+      }
+      #menu a:hover {
+        color: rgb(227, 188, 188);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo" style="background-color: white">
+        <img src="images/logo.png" alt="Logo" />
+      </div>
+      <div class="head">
+        <ul id="menu">
+          <li><a href="logined.html">Home</a></li>
+          <li><a href="./shop.html">Shops</a></li>
+          <li><a href="./wishlist.html">wishlist</a></li>
+          <li><a href="./cart.html">Cart</a></li>
+          <li><a href="./order.html">Orders</a></li>
+          <li><a href="./profile.html">Profile</a></li>
+          <li><a href="./login.html">Sign In</a></li>
+          <li><a href="./register.html">Register</a></li>
+        </ul>
+      </div>
+      <!-- <div class="search">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button onclick="search()">Search</button>
+      </div> -->
+      <div class="search">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button id="searchButton" onclick="search()">Search</button>
+      </div>
+      
+    </header>
+
+    <section id="shops" class="grid-container">
+      <!-- Shop listings will be dynamically added here -->
+    </section>
+
+    <section id="products" class="grid-container" style="display: none">
+      <!-- Product listings will be dynamically added here -->
+      <button onclick="goBack()">Back to Shops</button>
+    </section>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+      // Sample data for demonstration
+      const shops = [
+        {
+          name: "Shop 1",
+          image: "images/shop2.jpg",
+          products: [
+            { name: "Product A", image: "images/product1.jpg" },
+            { name: "Product B", image: "images/product2.jpg" },
+            { name: "Product C", image: "images/product2.jpg" },
+          ],
+        },
+        {
+          name: "Shop 2",
+          image: "images/shop.jpg",
+          products: [
+            { name: "Product X", image: "product4.jpg" },
+            { name: "Product Y", image: "product5.jpg" },
+            { name: "Product Z", image: "product6.jpg" },
+          ],
+        },
+        {
+          name: "Shop 3",
+          image: "images/shop3.jpg",
+          products: [
+            { name: "Product A", image: "product1.jpg" },
+            { name: "Product B", image: "product2.jpg" },
+            { name: "Product C", image: "product3.jpg" },
+          ],
+        },
+        {
+          name: "Shop 4",
+          image: "images/shop4.jpg",
+          products: [
+            { name: "Product X", image: "product4.jpg" },
+            { name: "Product Y", image: "product5.jpg" },
+            { name: "Product Z", image: "product6.jpg" },
+          ],
+        },
+        {
+          name: "Shop 5",
+          image: "images/shop5.jpg",
+          products: [
+            { name: "Product A", image: "product1.jpg" },
+            { name: "Product B", image: "product2.jpg" },
+            { name: "Product C", image: "product3.jpg" },
+          ],
+        },
+        {
+          name: "Shop 6",
+          image: "images/shop.jpg",
+          products: [
+            { name: "Product X", image: "product4.jpg" },
+            { name: "Product Y", image: "product5.jpg" },
+            { name: "Product Z", image: "product6.jpg" },
+          ],
+        },
+        {
+          name: "Shop 7",
+          image: "images/shop3.jpg",
+          products: [
+            { name: "Product A", image: "product1.jpg" },
+            { name: "Product B", image: "product2.jpg" },
+            { name: "Product C", image: "product3.jpg" },
+          ],
+        },
+        {
+          name: "Shop 8",
+          image: "images/shop2.jpg",
+          products: [
+            { name: "Product X", image: "product4.jpg" },
+            { name: "Product Y", image: "product5.jpg" },
+            { name: "Product Z", image: "product6.jpg" },
+          ],
+        },
+        {
+          name: "Shop 9",
+          image: "images/shop2.jpg",
+          products: [
+            { name: "Product A", image: "images/product1.jpg" },
+            { name: "Product B", image: "images/product2.jpg" },
+            { name: "Product C", image: "images/product2.jpg" },
+          ],
+        },
+        {
+          name: "Shop 10",
+          image: "images/shop2.jpg",
+          products: [
+            { name: "Product A", image: "images/product1.jpg" },
+            { name: "Product B", image: "images/product2.jpg" },
+            { name: "Product C", image: "images/product2.jpg" },
+          ],
+        },
+        // Add more shop data as needed
+      ];
+
+      // Function to display shops
+      function displayShops() {
+        const shopSection = document.getElementById("shops");
+        shopSection.innerHTML = "";
+
+        shops.forEach((shop) => {
+          const shopDiv = document.createElement("div");
+          shopDiv.classList.add("shop");
+          shopDiv.innerHTML = `
+            <img src="${shop.image}" alt="${
+            shop.name
+          }" style="width: 250px; height: 250px;">
+            <h2>${shop.name}</h2>
+            <button onclick="showProducts(${shops.indexOf(
+              shop
+            )})">View Products</button>
+        `;
+          shopSection.appendChild(shopDiv);
+        });
+      }
+
+      // Function to display products of a shop
+      function showProducts(index) {
+        const shop = shops[index];
+        const productsSection = document.getElementById("products");
+        const shopSection = document.getElementById("shops");
+
+        shopSection.style.display = "none";
+        productsSection.style.display = "grid";
+        productsSection.innerHTML = "";
+
+        shop.products.forEach((product) => {
+          const productDiv = document.createElement("div");
+          productDiv.classList.add("product");
+          productDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" style="width: 250px; height: 250px;">
+            <h3>${product.name}</h3>
+            <button onclick="goBack()">Back to Shops</button>
+        `;
+          productsSection.appendChild(productDiv);
+        });
+      }
+
+      // Function to go back to shops listing
+      function goBack() {
+        const productsSection = document.getElementById("products");
+        const shopSection = document.getElementById("shops");
+
+        productsSection.style.display = "none";
+        shopSection.style.display = "grid";
+      }
+      // Function to filter shops based on search input
+      // function search() {
+      //   const searchTerm = document
+      //     .getElementById("searchInput")
+      //     .value.toLowerCase();
+      //   const filteredShops = shops.filter((shop) => {
+      //     // Check if search term matches shop name or any product in the shop
+      //     return (
+      //       shop.name.toLowerCase().includes(searchTerm) ||
+      //       shop.products.some(
+      //         (product) =>
+      //           typeof product === "string" &&
+      //           product.toLowerCase().includes(searchTerm)
+      //       )
+      //     );
+      //   });
+      //   displayShops(filteredShops);
+      // }
+
+      // Function to filter shops based on search input
+      function search() {
+        const searchTerm = document
+          .getElementById("searchInput")
+          .value.toLowerCase()
+          .trim();
+
+        // If search term is empty, display all shops
+        if (searchTerm === "") {
+          displayShops();
+          return;
+        }
+
+        // Filter shops based on search term
+        const filteredShops = shops.filter((shop) => {
+          return (
+            shop.name.toLowerCase().includes(searchTerm) ||
+            shop.products.some((product) =>
+              product.name.toLowerCase().includes(searchTerm)
+            )
+          );
+        });
+
+        displayShops(filteredShops);
+      }
+
+      // Bind the search function to the Enter key press event
+      document
+        .getElementById("searchInput")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            search();
+          }
+        });
+
+      // Initial call to display shops
+      displayShops();
+    </script>
+  </body>
+</html>

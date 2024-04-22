@@ -1,0 +1,124 @@
+html{
+    background-color: #9E9E9E;
+    margin: 0px;
+    padding: 0px;
+    height: 2000px;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 150px; 
+}
+
+
+#logodiv #logoimage{
+    height: 50px;
+    /* border: 1px solid black; */
+    position: relative;
+    left: 20px;
+    top: 10px;
+    
+}
+
+#searchinput{
+    height: 35px;
+    width: 200px;
+    background-color: rgba(35, 47, 51, 0.5);
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid rgb(52, 71, 77);
+    position: absolute;
+    right: 30px;
+    top: 20px;
+}
+
+#pcardsdiv{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    margin: 20px;
+    top: 150px;
+}
+
+
+
+.cardclass{
+    position: relative; /* Add this line */
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    flex: 0 0 calc(30% - 20px); /* Adjust the width of each image container */
+    width: calc(25% - 20px); /* Adjust the width of each image container */
+    height: auto; /* Allow the height to adjust based on the image aspect ratio */
+    margin: 20px; /* Add some margin between the image containers */
+}
+
+.cardclass img{
+    width: 100%; /* Ensure images fill their containers */
+    height: 100%; 
+    display: block; 
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+    opacity:0;
+}
+
+
+.cardclass:hover .overlay {
+    height: 30%;
+    opacity:1;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* contact */
+#contactdiv {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+#contactdiv h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 1em;
+    
+}
+
+#contactdiv p {
+    color: #555;
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1em;
+}
+
+#contactdiv p:last-child {
+    border-bottom: none;
+}
